@@ -235,7 +235,7 @@ class SupplierController extends Controller
 
             $insert = [];
             if (count($data) > 1) { // jika data lebih dari 1 baris
-               
+
                 foreach ($data as $baris => $value) {
                     if ($baris > 1) { // baris ke 1 adalah header, maka lewati
                         $insert[] = [
@@ -270,7 +270,7 @@ class SupplierController extends Controller
     {
         //ambil data barang yang akan di export
         $supplier = SupplierModel::select('supplier_kode', 'supplier_nama', 'supplier_alamat')
-            
+
             ->get();
 
         //load library excel
@@ -316,4 +316,19 @@ class SupplierController extends Controller
         $writer->save('php://output');
         exit;
     } // end function export_excel
+
+
+    public function export_pdf()
+    {
+        $suppliers = SupplierModel::select('supplier_kode', 'supplier_nama', 'supplier_alamat')
+            ->orderBy('supplier_kode')
+            ->get();
+
+        $pdf = Pdf::loadView('supplier.export_pdf', ['suppliers' => $suppliers]);
+        $pdf->setPaper('a4', 'portrait');
+        $pdf->setOption("isRemoteEnabled", true);
+        $pdf->render();
+
+        return $pdf->stream('Data Supplier ' . date('Y-m-d H:i:s') . '.pdf');
+    }
 }

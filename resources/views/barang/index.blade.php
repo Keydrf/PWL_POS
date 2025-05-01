@@ -11,7 +11,6 @@
                 <a href="{{ url('/barang/export_pdf') }}" target="_blank" rel="noopener" class="btn btn-warning">
                     <i class="fa fa-file-pdf"></i> Export PDF
                 </a>
-                
                 <button onclick="modalAction('{{ url('/barang/create_ajax') }}')" class="btn btn-success">Tambah Data (Ajax)</button>
             </div>
         </div>

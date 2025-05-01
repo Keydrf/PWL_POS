@@ -488,4 +488,19 @@ class UserController extends Controller
         $writer->save('php://output');
         exit;
     }
+
+    public function export_pdf()
+    {
+        $users = UserModel::with('level')
+            ->select('user_id', 'level_id', 'username', 'nama')
+            ->orderBy('username')
+            ->get();
+
+        $pdf = Pdf::loadView('user.export_pdf', ['users' => $users]);
+        $pdf->setPaper('a4', 'portrait');
+        $pdf->setOption("isRemoteEnabled", true);
+        $pdf->render();
+
+        return $pdf->stream('Data User ' . date('Y-m-d H:i:s') . '.pdf');
+    }
 }

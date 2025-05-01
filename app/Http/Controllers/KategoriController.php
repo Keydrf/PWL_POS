@@ -354,4 +354,20 @@ class KategoriController extends Controller
         $writer->save('php://output');
         exit;
     } // end function export_excel
+
+    public function export_pdf()
+{
+    $kategori = KategoriModel::select('kategori_id', 'kategori_kode', 'kategori_nama')
+        ->orderBy('kategori_kode')
+        ->get();
+
+    // Menggunakan Barryvdh\DomPDF\Facade\Pdf
+    $pdf = Pdf::loadView('kategori.export_pdf', ['kategori' => $kategori]);
+    $pdf->setPaper('a4', 'portrait'); // Set ukuran kertas dan orientasi
+    $pdf->setOption("isRemoteEnabled", true); // Set true jika ada gambar dari URL
+    $pdf->render();
+
+    return $pdf->stream('Data Kategori ' . date('Y-m-d H:i:s') . '.pdf');
+}
+
 }
