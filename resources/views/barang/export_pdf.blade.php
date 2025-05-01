@@ -1,30 +1,26 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="UTF-8">
     <style>
-        body{
+        @page {
+            margin: 20px 25px 20px 25px;
+        }
+        body {
             font-family: "Times New Roman", Times, serif;
-            margin: 6px 20px 5px 20px;
-            line-height: 15px;
+            font-size: 11pt;
+            line-height: 1.4;
         }
         table {
-            width:100%; 
+            width: 100%;
             border-collapse: collapse;
         }
         td, th {
-            padding: 4px 3px;
+            padding: 4px;
+            vertical-align: top;
         }
-        th{
+        th {
             text-align: left;
-        }
-        .d-block{
-            display: block;
-        }
-        img.image{
-            width: auto;
-            height: 80px;
-            max-width: 150px;
-            max-height: 150px;
         }
         .text-right {
             text-align: right;
@@ -32,53 +28,46 @@
         .text-center {
             text-align: center;
         }
-        .p-1{
-            padding: 5px 1px 5px 1px;
+        .border-bottom-header {
+            border-bottom: 1px solid #000;
         }
-        .font-10{
-            font-size: 10pt;
+        .border-all,
+        .border-all th,
+        .border-all td {
+            border: 1px solid #000;
         }
-        .font-11{
-            font-size: 11pt;
-        }
-        .font-12{
-            font-size: 12pt;
-        }
-        .font-13{
-            font-size: 13pt;
-        }
-        .border-bottom-header{
-            border-bottom: 1px solid;
-        }
-        .border-all, .border-all th, .border-all td{
-            border: 1px solid;
+        img.logo {
+            height: 80px;
         }
     </style>
 </head>
 <body>
     <table class="border-bottom-header">
         <tr>
-            <td width="15%" class="text-center"><img src="{{ asset('polinema-bw.png') }}"></td>
-            <td width="85%">
-                <span class="text-center d-block font-11 font-bold mb-1">KEMENTERIAN PENDIDIKAN, KEBUDAYAAN, RISET, DAN TEKNOLOGI</span>
-                <span class="text-center d-block font-13 font-bold mb-1">POLITEKNIK NEGERI MALANG</span>
-                <span class="text-center d-block font-10">Jl. Soekarno-Hatta No. 9 Malang 65141</span>
-                <span class="text-center d-block font-10">Telepon (0341) 404424 Pes. 101-105, 0341-404420, Fax. (0341) 404420</span>
-                <span class="text-center d-block font-10">Laman: www.polinema.ac.id</span>
+            <td width="15%" class="text-center">
+                <img src="data:image/jpeg;base64,{{ base64_encode(file_get_contents(public_path('polinema-bw.jpeg'))) }}" class="logo">
+            </td>
+            <td width="85%" class="text-center">
+                <div style="font-weight: bold;">KEMENTERIAN PENDIDIKAN, KEBUDAYAAN, RISET, DAN TEKNOLOGI</div>
+                <div style="font-size: 13pt; font-weight: bold;">POLITEKNIK NEGERI MALANG</div>
+                <div>Jl. Soekarno-Hatta No. 9 Malang 65141</div>
+                <div>Telepon (0341) 404424 Pes. 101-105, 0341-404420, Fax. (0341) 404420</div>
+                <div>Laman: www.polinema.ac.id</div>
             </td>
         </tr>
     </table>
 
-    <h3 class="text-center">LAPORAN DATA BARANG</h4>
-    <table class="border-all">
+    <h3 class="text-center" style="margin-top: 10px;">LAPORAN DATA BARANG</h3>
+
+    <table class="border-all" style="margin-top: 10px;">
         <thead>
             <tr>
-                <th class="text-center">No</th>
-                <th>Kode Barang</th>
-                <th>Nama Barang</th>
-                <th class="text-right">Harga Beli</th>
-                <th class="text-right">Harga Jual</th>
-                <th>Kategori</th>
+                <th class="text-center" width="5%">No</th>
+                <th width="15%">Kode Barang</th>
+                <th width="30%">Nama Barang</th>
+                <th class="text-right" width="15%">Harga Beli</th>
+                <th class="text-right" width="15%">Harga Jual</th>
+                <th width="20%">Kategori</th>
             </tr>
         </thead>
         <tbody>

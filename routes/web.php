@@ -18,7 +18,7 @@ Route::pattern('id', '[0-9]+'); // artinya ketika ada parameter {id}, maka harus
 // Route::post('login', [AuthController::class, 'postlogin']);
 // Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 
-//register
+// // register
 // Route::get('register', [AuthController::class, 'register'])->name('register')->middleware('guest');
 // Route::post('register', [AuthController::class, 'postregister'])->name('postregister')->middleware('guest');
 
@@ -132,8 +132,9 @@ Route::middleware(['auth'])->group(function () { // artinya semua route di dalam
         Route::post('/import_ajax', [BarangController::class, 'import_ajax']);
         Route::get('/export_excel', [BarangController::class, 'export_excel']);
         Route::get('/export_pdf', [BarangController::class, 'export_pdf']);
-        Route::get('/barang/export_pdf', [BarangController::class, 'export_pdf']);
     });
+    
+    Route::get('/barang/export_pdf', [BarangController::class, 'export_pdf']);
 });
 
 
